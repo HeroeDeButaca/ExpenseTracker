@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="ExpenseTracker.View.Pages.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ExpenseTracker.View.Pages"
+             xmlns:uc="clr-namespace:ExpenseTracker.View.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Viewbox Stretch="Uniform" Margin="12" HorizontalAlignment="Left">
+                <uc:RoundedSquareInfo Height="110" Width="220" Background="DimGray"
+                    TitleText="Balance:" TitleColor="White"
+                    MoneyText="1.000€" MoneyTextColor="Gold"/>
+            </Viewbox>
+
+            <TextBlock Grid.Column="1" Text="Grafico aquí" HorizontalAlignment="Left"
+                VerticalAlignment="Center" FontSize="28" Margin="13"/>
+
+            <Viewbox Grid.Row="1" Stretch="Uniform" Margin="12" HorizontalAlignment="Left">
+                <uc:RoundedSquareInfo Height="110" Width="220" Background="DimGray"
+                    TitleText="Last 30 days income:" TitleColor="White"
+                    MoneyText="1.000€" MoneyTextColor="LightGreen"/>
+            </Viewbox>
+
+            <Viewbox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left"
+                     Stretch="Uniform" Margin="12">
+                <uc:RoundedSquareInfo Height="110" Width="220" Background="DimGray"
+                    TitleText="Last 30 days expenses:" TitleColor="White"
+                    MoneyText="1.000€" MoneyTextColor="Red"/>
+            </Viewbox>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="7*"/>
+            </Grid.RowDefinitions>
+
+            <Border BorderBrush="White" BorderThickness="0,0,0,1"
+                    Margin="12,0,12,0" VerticalAlignment="Top">
+                <TextBlock Text="Recent transactions:" HorizontalAlignment="Left"
+                           VerticalAlignment="Bottom" FontSize="28" FontWeight="Bold"
+                           Foreground="White"/>
+            </Border>
+
+            <Viewbox Grid.Row="1" Stretch="Uniform" Margin="12,0,12,6">
+                <DataGrid Width="auto" Height="auto"
+                          RowHeight="35"
+                          HeadersVisibility="None"
+                          Background="Transparent"
+                          BorderThickness="0"
+                          HorizontalGridLinesBrush="Transparent"
+                          VerticalGridLinesBrush="Transparent"
+                          ItemsSource="{Binding TransactionsView}"
+                          CanUserAddRows="False" CanUserDeleteRows="False"
+                          AutoGenerateColumns="False" SelectionMode="Single"
+                          IsReadOnly="True" Focusable="False"
+                          CellStyle="{StaticResource TransactionCell}"
+                          RowStyle="{StaticResource TransactionRow}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Description}" Width="*"
+                                        ElementStyle="{StaticResource DataGridTextStyle}"/>
+                        <DataGridTextColumn Binding="{Binding Category}" Width="*"
+                                        ElementStyle="{StaticResource DataGridTextStyle}"/>
+                        <DataGridTextColumn Binding="{Binding Money}" Width="*"
+                                        ElementStyle="{StaticResource DataGridTextStyle}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </Viewbox>
+        </Grid>
+    </Grid>
+</UserControl>

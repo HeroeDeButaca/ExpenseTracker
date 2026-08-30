@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="ExpenseTracker.View.UserControls.Sidebar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:uc="clr-namespace:ExpenseTracker.View.UserControls"
+             mc:Ignorable="d">
+
+    <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+        <StackPanel Orientation="Vertical"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Stretch">
+
+            <uc:ImageButton
+                ImagePath="/Assets/MenuIcons/home_icon.png"
+                Text="Home"
+                FontSize="16"
+                Margin="0,0,0,10"/>
+
+            <uc:ImageButton
+                ImagePath="/Assets/MenuIcons/receipt_icon.png"
+                Text="Transactions"
+                Margin="0,0,0,10"/>
+
+            <uc:ImageButton
+                ImagePath="/Assets/MenuIcons/line-graph_icon.png"
+                Text="Graphics by Category"
+                Margin="0,0,0,10"/>
+
+            <uc:ImageButton
+                ImagePath="/Assets/MenuIcons/exchange-rate_icon.png"
+                Text="Exchange rate"
+                Margin="0,0,0,10"/>
+
+            <uc:ImageButton
+                ImagePath="/Assets/MenuIcons/settings_icon.png"
+                Text="Settings"/>
+
+        </StackPanel>
+    </Border>
+
+</UserControl>
