@@ -1,5 +1,23 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!--TransactionsGrid Style-->
+    <Style TargetType="DataGrid" x:Key="TransactionsGrid">
+        <Setter Property="RowHeight" Value="35"/>
+        <Setter Property="HeadersVisibility" Value="None"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="Black"/>
+        <Setter Property="VerticalGridLinesBrush" Value="Transparent"/>
+        <Setter Property="CanUserAddRows" Value="False"/>
+        <Setter Property="CanUserDeleteRows" Value="False"/>
+        <Setter Property="AutoGenerateColumns" Value="False"/>
+        <Setter Property="SelectionMode" Value="Single"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="Focusable" Value="False"/>
+    </Style>
+    
+    <!--TransactionCell Style-->
     <Style TargetType="DataGridCell" x:Key="TransactionCell">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="White"/>
@@ -14,6 +32,7 @@
         </Style.Triggers>
     </Style>
     
+    <!--TransactionRow Style-->
     <Style TargetType="DataGridRow" x:Key="TransactionRow">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="White"/>
@@ -27,6 +46,7 @@
         </Style.Triggers>
     </Style>
 
+    <!--Text style for datagrid entries-->
     <Style x:Key="DataGridTextStyle" TargetType="TextBlock">
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontSize" Value="16"/>

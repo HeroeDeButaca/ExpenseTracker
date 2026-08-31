@@ -21,11 +21,13 @@
                 ImagePath="/Assets/MenuIcons/receipt_icon.png"
                 Text="Transactions"
                 Margin="0,0,0,10"/>
-
-            <uc:ImageButton
-                ImagePath="/Assets/MenuIcons/line-graph_icon.png"
-                Text="Graphics by Category"
-                Margin="0,0,0,10"/>
+            <!--
+                <uc:ImageButton
+                    ImagePath="/Assets/MenuIcons/line-graph_icon.png"
+                    Text="Graphics by Category"
+                    Margin="0,0,0,10"/>
+            -->
+            
 
             <uc:ImageButton
                 ImagePath="/Assets/MenuIcons/exchange-rate_icon.png"

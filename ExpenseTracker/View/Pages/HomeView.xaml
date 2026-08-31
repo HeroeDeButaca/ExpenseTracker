@@ -61,16 +61,8 @@
 
             <Viewbox Grid.Row="1" Stretch="Uniform" Margin="12,0,12,6">
                 <DataGrid Width="auto" Height="auto"
-                          RowHeight="35"
-                          HeadersVisibility="None"
-                          Background="Transparent"
-                          BorderThickness="0"
-                          HorizontalGridLinesBrush="Transparent"
-                          VerticalGridLinesBrush="Transparent"
+                          Style="{StaticResource TransactionsGrid}"
                           ItemsSource="{Binding TransactionsView}"
-                          CanUserAddRows="False" CanUserDeleteRows="False"
-                          AutoGenerateColumns="False" SelectionMode="Single"
-                          IsReadOnly="True" Focusable="False"
                           CellStyle="{StaticResource TransactionCell}"
                           RowStyle="{StaticResource TransactionRow}">
                     <DataGrid.Columns>
@@ -78,7 +70,7 @@
                                         ElementStyle="{StaticResource DataGridTextStyle}"/>
                         <DataGridTextColumn Binding="{Binding Category}" Width="*"
                                         ElementStyle="{StaticResource DataGridTextStyle}"/>
-                        <DataGridTextColumn Binding="{Binding Money}" Width="*"
+                        <DataGridTextColumn Binding="{Binding Money, StringFormat=C}" Width="*"
                                         ElementStyle="{StaticResource DataGridTextStyle}"/>
                     </DataGrid.Columns>
                 </DataGrid>

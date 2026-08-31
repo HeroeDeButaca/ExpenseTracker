@@ -2,7 +2,7 @@
 {
     public enum TransactionCategories
     {
-        Food, Debt, Reparation, Entertainment, Other
+        Food, Debt, Reparation, Entertainment, Subscription, Other
     }
 
     public enum TransactionType { Expense, Income }
