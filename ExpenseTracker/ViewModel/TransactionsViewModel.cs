@@ -1,4 +1,5 @@
-﻿using ExpenseTracker.Model;
+﻿using ExpenseTracker.Data;
+using ExpenseTracker.Model;
 using ExpenseTracker.MVVM;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -11,30 +12,23 @@ namespace ExpenseTracker.ViewModel
         public ObservableCollection<Transaction> Transactions { get; } = new();
         public ICollectionView TransactionsView { get; }
 
-        public TransactionsViewModel()
+        private readonly TransactionRepository _repository;
+
+        public TransactionsViewModel(TransactionRepository repository)
         {
-            Transaction t = new Transaction("Prueba", TransactionCategories.Food, TransactionType.Expense, -100m);
-            Transaction t2 = new Transaction("Segunda prueba", TransactionCategories.Entertainment, TransactionType.Expense, -150.02m);
-            Transactions.Add(t);
-            Transactions.Add(t2);
-            Transactions.Add(t);
-            Transactions.Add(t2);
-            Transactions.Add(t);
-            Transactions.Add(t2);
-            Transactions.Add(t);
-            Transactions.Add(t2);
-            Transactions.Add(t);
-            Transactions.Add(t2);
-            Transactions.Add(t);
-            Transactions.Add(t2);
-            Transactions.Add(t);
-            Transactions.Add(t2);
-            Transactions.Add(t);
-            Transactions.Add(t2);
-            Transactions.Add(t);
-            Transactions.Add(t2);
+            _repository = repository;
+
+            LoadTransactions();
 
             TransactionsView = CollectionViewSource.GetDefaultView(Transactions);
+        }
+
+        private void LoadTransactions()
+        {
+            foreach (var transaction in _repository.GetAll(true))
+            {
+                Transactions.Add(transaction);
+            }
         }
     }
 }

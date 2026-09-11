@@ -1,4 +1,5 @@
-﻿using ExpenseTracker.Model;
+﻿using ExpenseTracker.Data;
+using ExpenseTracker.Model;
 using ExpenseTracker.MVVM;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -11,13 +12,24 @@ namespace ExpenseTracker.ViewModel
         public ObservableCollection<Transaction> Transactions { get; } = new();
         public ICollectionView TransactionsView { get; }
 
-        public HomeViewModel()
+        private readonly TransactionRepository _repository;
+
+        public HomeViewModel(TransactionRepository repository)
         {
-            Transaction t = new Transaction("Prueba", TransactionCategories.Food, TransactionType.Expense, -100m);
-            Transactions.Add(t);
+            _repository = repository;
+
+            LoadTransactions();
 
             TransactionsView = CollectionViewSource.GetDefaultView(Transactions);
 
+        }
+
+        private void LoadTransactions()
+        {
+            foreach(var transaction in _repository.GetAll(true))
+            {
+                Transactions.Add(transaction);
+            }
         }
     }
 }

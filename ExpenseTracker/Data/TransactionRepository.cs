@@ -34,7 +34,7 @@ namespace ExpenseTracker.Data
             command.ExecuteNonQuery();
         }
 
-        public List<Transaction> GetAll()
+        public List<Transaction> GetAll(bool recentFirst)
         {
             List<Transaction> transactions = new List<Transaction>();
 
@@ -42,11 +42,21 @@ namespace ExpenseTracker.Data
             connection.Open();
 
             using var command = connection.CreateCommand();
-            command.CommandText =
-                """
-                SELECT Id, Description, Category, Type,
-                Money, TransactionDate FROM Transactions;
-                """;
+
+            if (recentFirst)
+                command.CommandText =
+                    """
+                    SELECT Id, Description, Category, Type,
+                    Money, TransactionDate FROM Transactions
+                    ORDER BY Id DESC;
+                    """;
+            else
+                command.CommandText =
+                    """
+                    SELECT Id, Description, Category, Type,
+                    Money, TransactionDate FROM Transactions
+                    ORDER BY Id ASC;
+                    """;
 
             using var reader = command.ExecuteReader();
 

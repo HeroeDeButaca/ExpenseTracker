@@ -53,29 +53,27 @@
             </Grid.RowDefinitions>
 
             <Border BorderBrush="White" BorderThickness="0,0,0,1"
-                    Margin="12,0,12,0" VerticalAlignment="Top">
+                    Margin="12,0,12,6" VerticalAlignment="Bottom">
                 <TextBlock Text="Recent transactions:" HorizontalAlignment="Left"
                            VerticalAlignment="Bottom" FontSize="28" FontWeight="Bold"
                            Foreground="White"/>
             </Border>
 
-            <Viewbox Grid.Row="1" Stretch="Uniform" Margin="12,0,12,6">
-                <DataGrid Width="auto" Height="auto"
-                          Style="{StaticResource TransactionsGrid}"
-                          ItemsSource="{Binding TransactionsView}"
-                          CellStyle="{StaticResource TransactionCell}"
-                          RowStyle="{StaticResource TransactionRow}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Description}" Width="*"
+            <DataGrid Grid.Row="1" Margin="12,0,12,6"
+                      Width="auto" Height="auto"
+                      Style="{StaticResource TransactionsGrid}"
+                      ItemsSource="{Binding TransactionsView}"
+                      CellStyle="{StaticResource TransactionCell}"
+                      RowStyle="{StaticResource TransactionRow}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Description}" Width="*"
                                         ElementStyle="{StaticResource DataGridTextStyle}"/>
-                        <DataGridTextColumn Binding="{Binding Category}" Width="*"
+                    <DataGridTextColumn Binding="{Binding Category}" Width="*"
                                         ElementStyle="{StaticResource DataGridTextStyle}"/>
-                        <DataGridTextColumn Binding="{Binding Money, StringFormat=C}" Width="*"
+                    <DataGridTextColumn Binding="{Binding Money, StringFormat=C}" Width="*"
                                         ElementStyle="{StaticResource DataGridTextStyle}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-
-            </Viewbox>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </Grid>
 </UserControl>

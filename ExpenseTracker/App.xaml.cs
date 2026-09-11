@@ -1,5 +1,4 @@
 ﻿using ExpenseTracker.Data;
-using ExpenseTracker.Model;
 using System.Windows;
 
 namespace ExpenseTracker
