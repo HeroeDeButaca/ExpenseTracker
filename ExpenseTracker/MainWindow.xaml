@@ -21,7 +21,11 @@
                 <ColumnDefinition Width="8*"/>
             </Grid.ColumnDefinitions>
 
-            <uc:Sidebar/>
+            <uc:Sidebar
+                HomeCommand="{Binding SetHomeViewCommand}"
+                TransactionsCommand="{Binding SetTransactionsViewCommand}"
+                ExchangeCommand="{Binding SetExchangeViewCommand}"
+                SettingsCommand="{Binding SetSettingsViewCommand}"/>
 
             <ContentControl Grid.Column="1"
                             Content="{Binding CurrentView}"/>

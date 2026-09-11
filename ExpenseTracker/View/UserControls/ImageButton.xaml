@@ -12,7 +12,8 @@
             <Image Source="{Binding ImagePath, ElementName=root}" HorizontalAlignment="Center" Panel.ZIndex="-1"
                Height="auto" Width="auto" Stretch="Uniform"/>
         </Grid>
-        <Button Background="Transparent" BorderThickness="0" Command="{Binding Command, ElementName=root}"/>
+        <Button Background="Transparent" BorderThickness="0" Command="{Binding Command, ElementName=root}"
+                CommandParameter="{Binding CommandParameter, ElementName=root}"/>
         <TextBlock Text="{Binding Text, ElementName=root}" FontSize="{Binding FontSize, ElementName=root}" Foreground="White"
                    VerticalAlignment="Center" Margin="53,0,0,0" Panel.ZIndex="-1"/>
     </Grid>

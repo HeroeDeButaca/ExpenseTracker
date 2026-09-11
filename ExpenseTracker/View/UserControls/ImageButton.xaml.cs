@@ -15,6 +15,10 @@ namespace ExpenseTracker.View.UserControls
             DependencyProperty.Register(nameof(Command), typeof(ICommand), typeof(ImageButton),
             new PropertyMetadata(default(ICommand)));
 
+        public static readonly DependencyProperty CommandParameterProperty =
+            DependencyProperty.Register(nameof(CommandParameter), typeof(object), typeof(ImageButton),
+                new PropertyMetadata(null));
+
         public new static readonly DependencyProperty FontSizeProperty =
             DependencyProperty.Register(nameof(FontSize), typeof(double), typeof(ImageButton),
             new PropertyMetadata(default(double)));
@@ -33,6 +37,12 @@ namespace ExpenseTracker.View.UserControls
         {
             get => (ICommand)GetValue(CommandProperty);
             set => SetValue(CommandProperty, value);
+        }
+
+        public object CommandParameter
+        {
+            get => GetValue(CommandParameterProperty);
+            set => SetValue(CommandParameterProperty, value);
         }
 
         public new double FontSize
