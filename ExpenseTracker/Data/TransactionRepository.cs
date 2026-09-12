@@ -20,14 +20,21 @@ namespace ExpenseTracker.Data
             command.CommandText =
                 """
                 INSERT INTO Transactions(
-                    Description, Category, Type, Money, TransactionDate)
+                    Description, Type, Category, ExpenseCategory, IncomeCategory, Money, TransactionDate)
                 VALUES(
-                    $description, $category, $type, $money, $transactionDate);
+                    $description, $type, $category, $expenseCategory, $incomeCategory, $money, $transactionDate);
                 """;
 
             command.Parameters.AddWithValue("$description", transaction.Description);
-            command.Parameters.AddWithValue("$category", (int)transaction.Category);
             command.Parameters.AddWithValue("$type", (int)transaction.Type);
+            command.Parameters.AddWithValue("$category", transaction.Category);
+
+            command.Parameters.AddWithValue("$expenseCategory",
+                transaction.ExpenseCategory.HasValue ? (int)transaction.ExpenseCategory.Value : DBNull.Value);
+
+            command.Parameters.AddWithValue("$incomeCategory",
+                transaction.IncomeCategory.HasValue ? (int)transaction.IncomeCategory.Value : DBNull.Value);
+
             command.Parameters.AddWithValue("$money", transaction.Money);
             command.Parameters.AddWithValue("$transactionDate", transaction.TransactionDate.ToString("O"));
 
@@ -46,16 +53,16 @@ namespace ExpenseTracker.Data
             if (recentFirst)
                 command.CommandText =
                     """
-                    SELECT Id, Description, Category, Type,
-                    Money, TransactionDate FROM Transactions
-                    ORDER BY Id DESC;
+                    SELECT Id, Description, Type, Category, 
+                    ExpenseCategory, IncomeCategory, Money, 
+                    TransactionDate FROM Transactions ORDER BY Id DESC;
                     """;
             else
                 command.CommandText =
                     """
-                    SELECT Id, Description, Category, Type,
-                    Money, TransactionDate FROM Transactions
-                    ORDER BY Id ASC;
+                    SELECT Id, Description, Type, Category, 
+                    ExpenseCategory, IncomeCategory, Money, 
+                    TransactionDate FROM Transactions ORDER BY Id ASC;
                     """;
 
             using var reader = command.ExecuteReader();
@@ -66,10 +73,12 @@ namespace ExpenseTracker.Data
                 {
                     Id = reader.GetInt32(0),
                     Description = reader.GetString(1),
-                    Category = (TransactionCategories)reader.GetInt32(2),
-                    Type = (TransactionType)reader.GetInt32(3),
-                    Money = reader.GetDecimal(4),
-                    TransactionDate = DateTime.Parse(reader.GetString(5))
+                    Type = (TransactionType)reader.GetInt32(2),
+                    Category = reader.GetString(3),
+                    ExpenseCategory = reader.IsDBNull(4) ? null : (ExpenseCategory)reader.GetInt32(4),
+                    IncomeCategory = reader.IsDBNull(5) ? null : (IncomeCategory)reader.GetInt32(5),
+                    Money = reader.GetDecimal(6),
+                    TransactionDate = DateTime.Parse(reader.GetString(7))
                 };
 
                 transactions.Add(transaction);

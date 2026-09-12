@@ -6,7 +6,7 @@ namespace ExpenseTracker.Data
     public class Database
     {
         private readonly string _connectionString;
-        private const string DATABASE_FILENAME = "expense_tracker.db";
+        private const string DATABASE_FILENAME = "expense_tracker_database.db";
 
         public Database()
         {
@@ -30,8 +30,10 @@ namespace ExpenseTracker.Data
                 CREATE TABLE IF NOT EXISTS Transactions(
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
                     Description TEXT NOT NULL,
-                    Category INTEGER NOT NULL,
                     Type INTEGER NOT NULL,
+                    Category TEXT NOT NULL,
+                    ExpenseCategory INTEGER,
+                    IncomeCategory INTEGER,
                     Money REAL NOT NULL,
                     TransactionDate TEXT NOT NULL
                 );
