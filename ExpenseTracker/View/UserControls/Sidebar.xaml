@@ -13,6 +13,7 @@
                     HorizontalAlignment="Stretch">
 
             <uc:ImageButton
+                ButtonStyle="{StaticResource SidebarButton}"
                 ImagePath="/Assets/MenuIcons/home_icon.png"
                 Text="Home"
                 FontSize="16"
@@ -20,6 +21,7 @@
                 Command="{Binding HomeCommand, ElementName=root}"/>
 
             <uc:ImageButton
+                ButtonStyle="{StaticResource SidebarButton}"
                 ImagePath="/Assets/MenuIcons/receipt_icon.png"
                 Text="Transactions"
                 Margin="0,0,0,10"
@@ -32,12 +34,14 @@
             -->
             
             <uc:ImageButton
+                ButtonStyle="{StaticResource SidebarButton}"
                 ImagePath="/Assets/MenuIcons/exchange-rate_icon.png"
                 Text="Exchange rate"
                 Margin="0,0,0,10"
                 Command="{Binding ExchangeCommand, ElementName=root}"/>
 
             <uc:ImageButton
+                ButtonStyle="{StaticResource SidebarButton}"
                 ImagePath="/Assets/MenuIcons/settings_icon.png"
                 Text="Settings"
                 Command="{Binding SettingsCommand, ElementName=root}"/>

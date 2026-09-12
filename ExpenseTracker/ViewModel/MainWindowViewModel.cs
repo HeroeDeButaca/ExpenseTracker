@@ -26,7 +26,7 @@ namespace ExpenseTracker.ViewModel
         {
             SetHomeViewCommand = new RelayCommand(execute => SetToHomeView(), canExecute => _currentView is not HomeView);
             SetTransactionsViewCommand = new RelayCommand(execute => SetToTransactionsView(), canExecute => _currentView is not TransactionsView);
-            SetExchangeViewCommand = new RelayCommand(execute => SetToTransactionsView(), canExecute => _currentView is not ExchangeView);
+            SetExchangeViewCommand = new RelayCommand(execute => SetToExchangeView(), canExecute => _currentView is not ExchangeView);
             SetSettingsViewCommand = new RelayCommand(execute => SetToSettingsView(), canExecute => _currentView is not SettingsView);
 
             CurrentView = new HomeView();
@@ -34,7 +34,7 @@ namespace ExpenseTracker.ViewModel
 
         private void SetToHomeView() { CurrentView = new HomeView(); }
         private void SetToTransactionsView() { CurrentView = new TransactionsView(); }
-        private void SetToExchangeView() { }
-        private void SetToSettingsView() { }
+        private void SetToExchangeView() { CurrentView = new ExchangeView(); }
+        private void SetToSettingsView() { CurrentView = new SettingsView(); }
     }
 }

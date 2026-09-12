@@ -8,13 +8,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="45" d:DesignWidth="200">
     <Grid>
-        <Grid Height="45" Width="45" HorizontalAlignment="Left">
-            <Image Source="{Binding ImagePath, ElementName=root}" HorizontalAlignment="Center" Panel.ZIndex="-1"
+        <Grid Height="45" Width="45" HorizontalAlignment="Left" IsHitTestVisible="False">
+            <Image Source="{Binding ImagePath, ElementName=root}" HorizontalAlignment="Center"
                Height="auto" Width="auto" Stretch="Uniform"/>
         </Grid>
-        <Button Background="Transparent" BorderThickness="0" Command="{Binding Command, ElementName=root}"
+        <Button Style="{Binding ButtonStyle, ElementName=root}"
+                Command="{Binding Command, ElementName=root}"
                 CommandParameter="{Binding CommandParameter, ElementName=root}"/>
         <TextBlock Text="{Binding Text, ElementName=root}" FontSize="{Binding FontSize, ElementName=root}" Foreground="White"
-                   VerticalAlignment="Center" Margin="53,0,0,0" Panel.ZIndex="-1"/>
+                   VerticalAlignment="Center" Margin="53,0,0,0" IsHitTestVisible="False"/>
     </Grid>
 </UserControl>

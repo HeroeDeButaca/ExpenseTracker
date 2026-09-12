@@ -11,6 +11,10 @@ namespace ExpenseTracker.View.UserControls
             DependencyProperty.Register(nameof(ImagePath), typeof(ImageSource), typeof(ImageButton),
             new PropertyMetadata(null));
 
+        public static readonly DependencyProperty ButtonStyleProperty =
+            DependencyProperty.Register(nameof(ButtonStyle), typeof(Style), typeof(ImageButton),
+            new PropertyMetadata(null));
+
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.Register(nameof(Command), typeof(ICommand), typeof(ImageButton),
             new PropertyMetadata(default(ICommand)));
@@ -31,6 +35,12 @@ namespace ExpenseTracker.View.UserControls
         {
             get => (ImageSource)GetValue(ImagePathProperty);
             set => SetValue(ImagePathProperty, value);
+        }
+
+        public Style ButtonStyle
+        {
+            get => (Style)GetValue(ButtonStyleProperty);
+            set => SetValue(ButtonStyleProperty, value);
         }
 
         public ICommand Command
